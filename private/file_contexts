@@ -633,6 +633,7 @@
 /data/local/tmp/ltp(/.*)?   u:object_r:nativetest_data_file:s0
 /data/local/traces(/.*)?	u:object_r:trace_data_file:s0
 /data/media             u:object_r:media_userdir_file:s0
+/data/media/.*/truebackup(/.*)? u:object_r:truebackup_data_file:s0
 /data/media/.*          u:object_r:media_rw_data_file:s0
 /data/mediadrm(/.*)?	u:object_r:media_data_file:s0
 /data/nativetest(/.*)?	u:object_r:nativetest_data_file:s0

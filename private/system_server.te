@@ -739,8 +739,8 @@ allow system_server media_rw_data_file:dir { search getattr open read };
 allow system_server wifi_mainline_supplicant_exec:file getattr;
 
 # Receive and use open /data/media files passed over binder IPC.
-# Also used for measuring disk usage.
-allow system_server media_rw_data_file:file { getattr read write append };
+# Also used for measuring disk usage and TrueBackup metadata/archives.
+allow system_server media_rw_data_file:file { getattr open read write append };
 
 # System server needs to setfscreate to packages_list_file when writing
 # /data/system/packages.list
