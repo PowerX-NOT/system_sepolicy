@@ -264,6 +264,8 @@ type timezonedetector_service, app_api_service, system_server_service, service_m
 type translation_service, app_api_service, ephemeral_app_api_service, system_server_service, service_manager_type;
 # TrueBackupService in system_server (com.android.truebackup Settings UI binder).
 type truebackup_service, app_api_service, system_api_service, system_server_service, service_manager_type;
+# App Lock service in system_server (com.android.applock Settings UI binder).
+type applock_service, app_api_service, system_api_service, system_server_service, service_manager_type;
 type trust_service, app_api_service, system_server_service, service_manager_type;
 type tv_ad_service, app_api_service, ephemeral_app_api_service, system_server_service, service_manager_type;
 type tv_iapp_service, app_api_service, ephemeral_app_api_service, system_server_service, service_manager_type;

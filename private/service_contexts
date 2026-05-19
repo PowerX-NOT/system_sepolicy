@@ -503,6 +503,7 @@ tracing.proxy                             u:object_r:tracingproxy_service:s0
 tradeinmode                               u:object_r:tradeinmode_service:s0
 translation                               u:object_r:translation_service:s0
 transparency                              u:object_r:transparency_service:s0
+applock                                  u:object_r:applock_service:s0
 truebackup                                u:object_r:truebackup_service:s0
 trust                                     u:object_r:trust_service:s0
 tv_ad                                     u:object_r:tv_ad_service:s0

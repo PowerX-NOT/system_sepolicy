@@ -503,6 +503,7 @@ var (
 		"translation":                            EXCEPTION_NO_FUZZER,
 		"transparency":                           EXCEPTION_NO_FUZZER,
 		"trust":                                  EXCEPTION_NO_FUZZER,
+		"applock":                                EXCEPTION_NO_FUZZER,
 		"truebackup":                             EXCEPTION_NO_FUZZER,
 		"truebackupd":                            EXCEPTION_NO_FUZZER,
 		"tv_ad":                                  EXCEPTION_NO_FUZZER,
