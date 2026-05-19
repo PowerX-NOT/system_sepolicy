@@ -27,6 +27,7 @@ type gpu_service,               app_api_service, ephemeral_app_api_service, serv
 type idmap_service,             service_manager_type;
 type incident_service,          service_manager_type;
 type installd_service,          service_manager_type;
+type truebackupd_service,       service_manager_type;
 type credstore_service,         app_api_service, service_manager_type;
 type keystore_compat_hal_service, service_manager_type;
 type keystore_maintenance_service, service_manager_type;

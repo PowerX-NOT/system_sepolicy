@@ -8,6 +8,7 @@ neverallow {
   mlstrustedsubject
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -mediaprovider_app
 } {
   app_data_file
@@ -19,6 +20,7 @@ neverallow {
   mlstrustedsubject
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -mediaprovider_app
 } {
   app_data_file
@@ -31,6 +33,7 @@ is_flag_enabled(RELEASE_UNLOCKED_STORAGE_API, `
     mlstrustedsubject
     -artd # compile secondary dex files
     -installd
+    -truebackupd
     -vold # encryption of storage areas
     -vold_prepare_subdirs # creation of storage area directories
   } { storage_area_dir storage_area_app_dir }:dir ~{ read getattr search };
@@ -40,6 +43,7 @@ neverallow {
   mlstrustedsubject
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -mediaprovider_app
   -system_server
   -adbd
@@ -56,6 +60,7 @@ is_flag_enabled(RELEASE_UNLOCKED_STORAGE_API, `
     mlstrustedsubject
     -artd # compile secondary dex files
     -installd
+    -truebackupd
     -system_server
     -adbd
     -runas

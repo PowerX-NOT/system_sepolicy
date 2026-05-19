@@ -31,6 +31,7 @@ allow atrace {
   -dumpstate_service
   -incident_service
   -installd_service
+  -truebackupd_service
   -lpdump_service
   -mdns_service
   -netd_service

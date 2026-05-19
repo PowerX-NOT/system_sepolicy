@@ -1488,6 +1488,7 @@ neverallow {
   -appdomain
   -artd
   -installd
+  -truebackupd
 } { app_data_file privapp_data_file }:lnk_file read;
 
 # servicemanager and vndservicemanager are the only processes which handle the
@@ -1725,6 +1726,7 @@ neverallow {
   -appdomain
   -artd # compile secondary dex files
   -installd # creation of sandbox
+  -truebackupd # backup/restore app data trees
 } {
   privapp_data_file
   app_data_file
@@ -1736,6 +1738,7 @@ is_flag_enabled(RELEASE_UNLOCKED_STORAGE_API, `
     domain
     -artd # compile secondary dex files
     -installd # creation of sandbox
+    -truebackupd # backup/restore app data trees
     -vold_prepare_subdirs # creation of storage area directories
   } {storage_area_app_dir storage_area_dir }:dir { create unlink };
 ')
@@ -1749,6 +1752,7 @@ neverallow {
   -app_zygote
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -profman
   -rs # spawned by appdomain, so carryover the exception above
   -runas
@@ -1794,6 +1798,7 @@ neverallow {
   -appdomain
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -rs # spawned by appdomain, so carryover the exception above
 } {
   privapp_data_file
@@ -1807,6 +1812,7 @@ is_flag_enabled(RELEASE_UNLOCKED_STORAGE_API, `
     -appdomain
     -artd # compile secondary dex files
     -installd
+    -truebackupd
     -rs # spawned by appdomain, so carryover the exception above
     -vold_prepare_subdirs # creation of storage area directories
   } { storage_area_dir storage_area_app_dir }:dir ~r_dir_perms;
@@ -1818,6 +1824,7 @@ neverallow {
   -app_zygote
   -artd # compile secondary dex files
   -installd
+  -truebackupd
   -rs # spawned by appdomain, so carryover the exception above
 } {
   privapp_data_file
@@ -1830,6 +1837,7 @@ neverallow {
   -appdomain
   -artd # compile secondary dex files
   -installd # creation of sandbox
+  -truebackupd # backup/restore app data trees
 } {
   privapp_data_file
   app_data_file
@@ -1840,6 +1848,7 @@ neverallow {
   domain
   -artd # compile secondary dex files
   -installd
+  -truebackupd
 } {
   privapp_data_file
   app_data_file
@@ -1851,6 +1860,7 @@ is_flag_enabled(RELEASE_UNLOCKED_STORAGE_API, `
     domain
     -artd # compile secondary dex files
     -installd
+    -truebackupd
     -vold_prepare_subdirs
   } { storage_area_dir storage_area_app_dir }:dir { relabelfrom relabelto };
 ')
@@ -2014,6 +2024,7 @@ define(`dac_override_allowed', `{
   dumpstate
   init
   installd
+  truebackupd
   userdebug_or_eng(`llkd')
   lmkd
   migrate_legacy_obb_data
@@ -2305,6 +2316,7 @@ neverallow {
   -artd # compile secondary dex files
   -system_server #populate com.android.providers.settings/databases/settings.db.
   -installd # creation of app sandbox
+  -truebackupd # backup/restore app data trees
   -traced_probes # resolve inodes for i/o tracing.
                  # only needs open and read, the rest is neverallow in
                  # traced_probes.te.

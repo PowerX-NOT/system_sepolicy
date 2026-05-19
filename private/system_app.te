@@ -115,6 +115,7 @@ allow system_app {
   -dnsresolver_service
   -dumpstate_service
   -installd_service
+  -truebackupd_service
   -lpdump_service
   -mdns_service
   -netd_service
@@ -130,6 +131,7 @@ dontaudit system_app {
   dnsresolver_service
   dumpstate_service
   installd_service
+  truebackupd_service
   mdns_service
   netd_service
   virtual_touchpad_service

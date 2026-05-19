@@ -380,6 +380,7 @@ starting_at_board_api(202604, `
   -hal_sharedsecret_service
   -incident_service
   -installd_service
+  -truebackupd_service
   -mdns_service
   -netd_service
   -system_suspend_control_internal_service
@@ -576,6 +577,7 @@ neverallow {
   -shell
   userdebug_or_eng(`-uncrypt')
   -installd
+  -truebackupd
 } shell_data_file:lnk_file read;
 
 # Restrict direct access to shell owned files. The /data/local/tmp directory is
@@ -592,6 +594,7 @@ neverallow {
   -artd
   -dumpstate
   -installd
+  -truebackupd
   userdebug_or_eng(`-uncrypt')
   userdebug_or_eng(`-virtualizationmanager')
   userdebug_or_eng(`-virtualizationservice')
@@ -611,6 +614,7 @@ neverallow {
   -artd
   -dumpstate
   -installd
+  -truebackupd
   -init
   -shell
   -vold
@@ -628,6 +632,7 @@ neverallow {
   -dumpstate
   -init
   -installd
+  -truebackupd
   -simpleperf_app_runner
   -system_server # why?
   userdebug_or_eng(`-uncrypt')
@@ -645,6 +650,7 @@ neverallow {
   -dumpstate
   -init
   -installd
+  -truebackupd
   -simpleperf_app_runner
   -system_server # why?
   userdebug_or_eng(`-uncrypt')

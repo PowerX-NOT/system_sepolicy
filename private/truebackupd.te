@@ -1,0 +1,42 @@
+typeattribute truebackupd coredomain;
+typeattribute truebackupd mlstrustedsubject;
+
+init_daemon_domain(truebackupd)
+add_service(truebackupd, truebackupd_service)
+
+binder_use(truebackupd)
+binder_call(system_server, truebackupd)
+allow system_server truebackupd_service:service_manager find;
+
+# Ownership and DAC fixes after restore (see dac_override_allowed in domain.te).
+allow truebackupd self:global_capability_class_set { chown dac_override dac_read_search };
+
+selinux_check_context(truebackupd)
+allow truebackupd file_contexts_file:file r_file_perms;
+allow truebackupd packages_list_file:file r_file_perms;
+
+allow truebackupd truebackup_data_file:dir create_dir_perms;
+allow truebackupd truebackup_data_file:file create_file_perms;
+allow truebackupd truebackup_data_file:lnk_file create_file_perms;
+allow truebackupd system_data_file:dir { getattr search write add_name };
+
+allow truebackupd app_data_file_type:dir { create_dir_perms relabelfrom relabelto };
+allow truebackupd app_data_file_type:notdevfile_class_set { create_file_perms relabelfrom relabelto };
+allow truebackupd app_data_file_type:lnk_file { create_file_perms relabelfrom relabelto };
+
+allow truebackupd media_rw_data_file:dir { create_dir_perms relabelfrom relabelto };
+allow truebackupd media_rw_data_file:file { create_file_perms relabelfrom relabelto };
+
+allow truebackupd storage_file:dir search;
+allow truebackupd mnt_pass_through_file:dir r_dir_perms;
+allow truebackupd { sdcard_type fuse }:dir { create_dir_perms open read write getattr setattr search remove_name rmdir rename };
+allow truebackupd { sdcard_type fuse }:file { create_file_perms open read write getattr setattr unlink rename };
+
+allow truebackupd apk_data_file:dir r_dir_perms;
+allow truebackupd apk_data_file:file r_file_perms;
+
+allow system_server truebackup_data_file:dir create_dir_perms;
+allow system_server truebackup_data_file:file create_file_perms;
+allow system_server truebackup_data_file:lnk_file create_file_perms;
+
+neverallow { domain -system_server -dumpstate -truebackupd } truebackupd_service:service_manager find;

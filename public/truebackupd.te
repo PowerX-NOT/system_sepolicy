@@ -1,0 +1,3 @@
+# TrueBackup daemon (frameworks/base/cmds/truebackupd)
+type truebackupd, domain;
+type truebackupd_exec, system_file_type, exec_type, file_type;
