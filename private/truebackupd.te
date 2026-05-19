@@ -9,15 +9,15 @@ binder_call(system_server, truebackupd)
 allow system_server truebackupd_service:service_manager find;
 
 # Ownership and DAC fixes after restore (see dac_override_allowed in domain.te).
-allow truebackupd self:global_capability_class_set { chown dac_override dac_read_search fsetid };
+allow truebackupd self:global_capability_class_set { chown dac_override dac_read_search fowner fsetid };
 
 selinux_check_context(truebackupd)
 allow truebackupd file_contexts_file:file r_file_perms;
 allow truebackupd packages_list_file:file r_file_perms;
 
-allow truebackupd truebackup_data_file:dir create_dir_perms;
-allow truebackupd truebackup_data_file:file create_file_perms;
-allow truebackupd truebackup_data_file:lnk_file create_file_perms;
+allow truebackupd truebackup_data_file:dir { create_dir_perms relabelfrom relabelto };
+allow truebackupd truebackup_data_file:file { create_file_perms relabelfrom relabelto };
+allow truebackupd truebackup_data_file:lnk_file { create_file_perms relabelfrom relabelto };
 # Create /data/system/truebackup before file_contexts labeling applies (see type_transition below).
 allow truebackupd system_data_file:dir create_dir_perms;
 
@@ -30,9 +30,8 @@ allow truebackupd app_data_file_type:lnk_file { create_file_perms relabelfrom re
 
 allow truebackupd media_rw_data_file:dir { create_dir_perms relabelfrom relabelto };
 allow truebackupd media_rw_data_file:file { create_file_perms relabelfrom relabelto };
-# Backup tree under /data/media/<user>/truebackup uses truebackup_data_file (see file_contexts).
-type_transition truebackupd media_rw_data_file:dir truebackup_data_file;
-type_transition truebackupd media_rw_data_file:file truebackup_data_file;
+# Shared-storage backups stay media_rw_data_file (see file_contexts) so file managers
+# can list them; only /data/system/truebackup uses truebackup_data_file.
 
 allow system_server truebackup_data_file:dir r_dir_perms;
 allow system_server truebackup_data_file:file r_file_perms;
